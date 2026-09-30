@@ -7,11 +7,9 @@ function getIdFromUrl() {
 
 function drawRadarChart(scores) {
   const traitKeys = Object.keys(TRAIT_INFO);
-  const labels = traitKeys.map((key) =>
-    key === "conscientiousness"
-      ? ["Conscientious", "ness"]
-      : TRAIT_INFO[key].label
-  );
+
+  const labels = traitKeys.map((key) => TRAIT_INFO[key].label);
+
   const dataValues = traitKeys.map((key) => scores[key]);
   const colors = traitKeys.map((key) => TRAIT_INFO[key].color);
 
