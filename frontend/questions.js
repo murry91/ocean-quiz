@@ -148,7 +148,7 @@ const QUESTIONS = [
   {
     id: 19,
     trait: "neuroticism",
-    text: "My screen usage increases when I feel stressed or anxious.",
+    text: "My screen usage ___________ when I feel stressed or anxious.",
     options: [
       { label: "Decreases", value: 0 },
       { label: "Stays the same", value: 0.5 },

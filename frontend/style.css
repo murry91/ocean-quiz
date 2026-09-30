@@ -239,3 +239,66 @@ body {
     max-width: 320px;
   }
 }
+
+/* ...existing code... */
+
+.trait-card {
+  min-width: 0;
+  margin: 12px 0;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: rgba(167, 179, 179, 0.08);
+}
+
+.trait-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+
+.trait-name {
+  min-width: 0;
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.trait-score {
+  flex: 0 0 auto;
+  max-width: 100%;
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.trait-description {
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .chart-wrap {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    margin: 20px auto;
+    position: relative;
+  }
+
+  #radarChart {
+    display: block;
+    max-width: 100%;
+  }
+
+  .trait-card {
+    padding: 14px;
+  }
+}
