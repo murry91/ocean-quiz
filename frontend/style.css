@@ -1,0 +1,241 @@
+:root {
+  --bg: #F2F2E8;
+  --card: #FAFAF5;
+  --text: #1E1B23;
+  --text-soft: #55505c;
+  --border: rgba(167, 179, 179, 0.35);
+
+  --cta: #D3968C;
+  --cta-hover: #C07E72;
+
+  --openness: #A694B2;
+  --conscientiousness: #A7B3B3;
+  --extraversion: #6B5673;
+  --agreeableness: #C7DCCF;
+  --neuroticism: #1E1B23;
+
+  --radius: 14px;
+  --shadow: 0 12px 32px rgba(30, 27, 35, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 4px 8px at 50% 31%, rgba(166, 148, 178, 0.34) 98%, transparent 100%),
+    radial-gradient(ellipse 8px 4px at 69% 50%, rgba(199, 220, 207, 0.60) 98%, transparent 100%),
+    radial-gradient(ellipse 4px 8px at 50% 69%, rgba(166, 148, 178, 0.34) 98%, transparent 100%),
+    radial-gradient(ellipse 8px 4px at 31% 50%, rgba(199, 220, 207, 0.60) 98%, transparent 100%),
+    radial-gradient(circle 2px at 50% 50%, rgba(107, 86, 115, 0.50) 98%, transparent 100%);
+  background-size: 104px 104px;
+  color: var(--text);
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px 36px 32px;
+}
+
+.brand {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--extraversion);
+  margin: 0 0 18px;
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(167, 179, 179, 0.25);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--agreeableness), var(--conscientiousness));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.progress-label {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+/* ---------- Question ---------- */
+.question-area {
+  margin-top: 32px;
+  min-height: 260px;
+}
+
+.question-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.35;
+  margin: 0 0 28px;
+  max-width: 46ch;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  text-align: left;
+  padding: 14px 18px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.option:hover {
+  border-color: var(--conscientiousness);
+  background: var(--agreeableness);
+}
+
+.option.selected {
+  background: var(--openness);
+  border-color: var(--extraversion);
+  color: #fff;
+  transform: scale(1.02);
+}
+
+.quiz-footer {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary {
+  background: var(--cta);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--cta-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background:rgba(167, 179, 179, 0.25);
+  color: var(--text-soft);
+}
+
+.btn-ghost:hover {
+  color: var(--text); 
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+  .quiz-card {
+    padding: 30px 22px 24px;
+  }
+  .question-text {
+    font-size: 1.3rem;
+  }
+}
+
+.quiz-card,
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-card {
+  max-width: 620px;
+  text-align: center;
+}
+
+.hero-illustration {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+.landing-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.9rem;
+  line-height: 1.3;
+  margin: 20px 0 16px;
+}
+
+.landing-blurb {
+  color: var(--text-soft);
+  font-size: 1rem;
+  max-width: 44ch;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.btn-large {
+  padding: 14px 36px;
+  font-size: 1.05rem;
+}
+
+
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  margin: 24px auto 0;
+}
+
+@media (max-width: 480px) {
+  .chart-wrap {
+    max-width: 320px;
+  }
+}

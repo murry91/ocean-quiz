@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCEAN Digital Footprint Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="page">
+    <div class="quiz-card">
+
+      <header class="quiz-header">
+        <p class="brand">Digital Footprint</p>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-label" id="progressLabel">Question 1 of 29</p>
+      </header>
+
+      <section class="question-area">
+        <h1 class="question-text" id="questionText">Loading…</h1>
+        <div class="options" id="optionsContainer"></div>
+      </section>
+
+      <footer class="quiz-footer">
+        <button class="btn btn-ghost" id="backBtn">Back</button>
+        <button class="btn btn-primary" id="nextBtn" disabled>Next</button>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>
