@@ -1,0 +1,16 @@
+{
+  "name": "ocean-quiz-backend",
+  "version": "1.0.0",
+  "description": "Backend for the OCEAN Digital Footprint personality quiz",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=24.15.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
