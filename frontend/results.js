@@ -9,9 +9,10 @@ function drawRadarChart(scores) {
   const traitKeys = Object.keys(TRAIT_INFO);
 
   const labels = traitKeys.map((key) => TRAIT_INFO[key].label);
-
   const dataValues = traitKeys.map((key) => scores[key]);
   const colors = traitKeys.map((key) => TRAIT_INFO[key].color);
+
+  const isMobile = window.innerWidth <= 480;
 
   const canvas = document.getElementById("radarChart");
   if (canvas._chartInstance) canvas._chartInstance.destroy();
@@ -34,17 +35,25 @@ function drawRadarChart(scores) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      layout: { padding: 12 },
+      layout: { padding: isMobile ? 4 : 12 },
       scales: {
         r: {
           min: 0,
           max: 10,
-          ticks: { stepSize: 2, backdropColor: "transparent" },
+          ticks: {
+            stepSize: 2,
+            backdropColor: "transparent",
+            display: !isMobile,
+          },
           grid: { color: "rgba(167, 179, 179, 0.3)" },
           angleLines: { color: "rgba(167, 179, 179, 0.3)" },
           pointLabels: {
-            padding: 6,
-            font: { family: "Quicksand", size: 12, weight: "600" },
+            padding: 4,
+            font: (ctx) => ({
+              family: "Quicksand",
+              size: ctx.chart.width < 300 ? 9 : ctx.chart.width < 360 ? 10 : 12,
+              weight: "600",
+            }),
             color: "#1E1B23",
           },
         },
@@ -69,11 +78,15 @@ function renderBreakdown(scores) {
         ? numericScore.toFixed(0)
         : numericScore.toFixed(1);
 
+      const pillTextColor = ["neuroticism", "extraversion"].includes(trait)
+        ? "#fff"
+        : "#1E1B23";
+
       return `
-        <section class="trait-card">
+        <section class="trait-card" style="--accent:${info.color}">
           <div class="trait-card-header">
-            <h2 class="trait-name" style="color:${info.color}">${info.label}</h2>
-            <span class="trait-score" style="background-color:${info.color}; color:${["neuroticism", "extraversion"].includes(trait) ? "#fff" : "#1E1B23"}">
+            <h2 class="trait-name">${info.label}</h2>
+            <span class="trait-score" style="background-color:${info.color}; color:${pillTextColor}">
               ${levelLabel} · ${formattedScore}/10
             </span>
           </div>
@@ -89,7 +102,6 @@ function setupDownloadButton() {
   const actionsRow = downloadBtn.parentElement;
 
   downloadBtn.addEventListener("click", async () => {
-
     actionsRow.style.visibility = "hidden";
 
     const canvas = await html2canvas(document.querySelector(".quiz-card"), {

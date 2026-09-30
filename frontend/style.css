@@ -164,25 +164,16 @@ body {
 }
 
 .btn-ghost {
-  background:rgba(167, 179, 179, 0.25);
+  background: rgba(167, 179, 179, 0.25);
   color: var(--text-soft);
 }
 
 .btn-ghost:hover {
-  color: var(--text); 
+  color: var(--text);
 }
 
 .btn:active:not(:disabled) {
   transform: scale(0.97);
-}
-
-@media (max-width: 480px) {
-  .quiz-card {
-    padding: 30px 22px 24px;
-  }
-  .question-text {
-    font-size: 1.3rem;
-  }
 }
 
 .quiz-card,
@@ -191,6 +182,7 @@ body {
   z-index: 1;
 }
 
+/* ---------- Landing ---------- */
 .landing-card {
   max-width: 620px;
   text-align: center;
@@ -225,7 +217,7 @@ body {
   font-size: 1.05rem;
 }
 
-
+/* ---------- Results ---------- */
 .chart-wrap {
   position: relative;
   width: 100%;
@@ -234,20 +226,14 @@ body {
   margin: 24px auto 0;
 }
 
-@media (max-width: 480px) {
-  .chart-wrap {
-    max-width: 320px;
-  }
-}
-
-/* ...existing code... */
-
 .trait-card {
   min-width: 0;
   margin: 12px 0;
   padding: 16px 18px;
   border-radius: var(--radius);
   background: rgba(167, 179, 179, 0.08);
+  border-left: 5px solid var(--accent, var(--conscientiousness));
+  border-bottom: 5px solid var(--accent, var(--conscientiousness));
 }
 
 .trait-card-header {
@@ -263,6 +249,7 @@ body {
   margin: 0;
   font-family: "Fraunces", serif;
   font-size: 1.05rem;
+  color: var(--text);
   overflow-wrap: anywhere;
 }
 
@@ -284,13 +271,34 @@ body {
   line-height: 1.4;
 }
 
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* ---------- Mobile ---------- */
 @media (max-width: 480px) {
+  body {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .quiz-card {
+    padding: 24px 16px 20px;
+  }
+
+  .question-text {
+    font-size: 1.3rem;
+  }
+
   .chart-wrap {
     width: 100%;
     max-width: 100%;
-    height: 300px;
-    margin: 20px auto;
-    position: relative;
+    height: 340px;
+    aspect-ratio: auto;
+    margin: 16px auto;
   }
 
   #radarChart {
@@ -300,5 +308,20 @@ body {
 
   .trait-card {
     padding: 14px;
+  }
+
+  /* Same layout for every card: name on top, pill underneath */
+  .trait-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Stack the buttons so the text never wraps */
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions .btn {
+    width: 100%;
   }
 }
